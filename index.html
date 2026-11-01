@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Thirdy Portfolio</title>
+<link rel="icon" href="https://samsales581-sys.github.io/Thirdy-Portfolio/favicon.png" type="image/png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000}
+#portfolioFrame{position:fixed;inset:0;width:100%;height:100%;border:0;margin:0;padding:0;z-index:1;background:#1a0000}
+.dynamic-island{position:fixed;top:82px;left:50%;transform:translateX(-50%);width:min(390px,calc(100vw - 24px));z-index:999999;color:#fff;background:rgba(5,5,5,.96);border:1px solid rgba(255,255,255,.07);border-radius:32px;overflow:hidden;box-shadow:0 12px 38px rgba(0,0,0,.45),0 0 20px rgba(29,185,84,.12);backdrop-filter:blur(18px);transition:width .32s ease,border-radius .32s ease,background-color .3s ease,color .3s ease,box-shadow .3s ease}
+.dynamic-island.expanded{width:min(500px,calc(100vw - 24px));border-radius:27px}
+.dynamic-island.switching{animation:islandSwitch .52s ease}
+@keyframes islandSwitch{0%{transform:translateX(-50%) scale(.96)}50%{transform:translateX(-50%) scale(1.025)}100%{transform:translateX(-50%) scale(1)}}
+.island-header{width:100%;min-height:54px;display:grid;grid-template-columns:36px minmax(0,1fr) auto 18px;gap:10px;align-items:center;padding:8px 12px;border:0;background:transparent;color:inherit;cursor:pointer;text-align:left}
+.spotify-icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#1db954;color:#071a0d;font-size:19px}
+.song-info{min-width:0}
+.song-info strong,.song-info small{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.song-info strong{font-size:12.5px}
+.song-info small{margin-top:2px;color:#999;font-size:10.5px}
+.music-bars{height:20px;display:flex;align-items:center;gap:2px}
+.music-bars span{width:3px;border-radius:5px;background:#1db954;animation:soundBar .8s infinite alternate}
+.music-bars span:nth-child(1){height:7px}
+.music-bars span:nth-child(2){height:16px;animation-delay:.15s}
+.music-bars span:nth-child(3){height:10px;animation-delay:.3s}
+.music-bars span:nth-child(4){height:20px;animation-delay:.45s}
+@keyframes soundBar{from{transform:scaleY(.4)}to{transform:scaleY(1)}}
+.arrow{color:#999;font-size:11px;transition:transform .3s ease}
+.dynamic-island.expanded .arrow{transform:rotate(180deg)}
+.player-area{max-height:0;opacity:0;overflow:hidden;padding:0 12px;transition:max-height .38s ease,opacity .25s ease,padding .38s ease}
+.dynamic-island.expanded .player-area{max-height:340px;opacity:1;padding:0 12px 12px}
+#spotifyPlayer{display:block;width:100%;height:152px;border:0;border-radius:14px;background:#111}
+.island-actions{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:8px}
+.spotify-button,.theme-button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:38px;border:0;border-radius:999px;font-size:12px;font-weight:800;cursor:pointer;text-decoration:none}
+.spotify-button{background:#1db954;color:#071a0d;padding:0 14px}
+.spotify-button:hover{background:#28d766}
+.theme-button{background:#232323;color:#fff;padding:0 12px;border:1px solid #3a3a3a}
+.theme-button:hover{border-color:#ff6b6b;color:#ff6b6b}
+.island-note{margin:8px 2px 0;color:#888;font-size:10px;line-height:1.4;text-align:center}
+html[data-theme="light"] .dynamic-island{background:rgba(255,250,250,.97);color:#2b1111;border-color:rgba(110,40,40,.12);box-shadow:0 12px 35px rgba(110,40,40,.18),0 0 20px rgba(255,107,107,.12)}
+html[data-theme="light"] .song-info small,html[data-theme="light"] .arrow,html[data-theme="light"] .island-note{color:#7b5a5a}
+html[data-theme="light"] .theme-button{background:#fff0f0;color:#4b2222;border-color:#ffc0c0}
+@media(max-width:600px){.dynamic-island{top:84px;width:calc(100vw - 18px)}.dynamic-island.expanded{width:calc(100vw - 12px)}.music-bars{display:none}.island-header{grid-template-columns:34px minmax(0,1fr) 16px}.island-header .arrow{grid-column:3}.island-actions{grid-template-columns:1fr}.theme-button{width:100%}}
+</style>
+<script>
+(function(){
+    const saved=localStorage.getItem("thirdy-portfolio-theme")||"dark";
+    document.documentElement.setAttribute("data-theme",saved);
+})();
+</script>
+</head>
+<body>
+<iframe id="portfolioFrame" src="home.html" title="Thirdy Portfolio"></iframe>
+<div id="dynamicIsland" class="dynamic-island">
+<button id="islandHeader" class="island-header" type="button" aria-expanded="false">
+<span class="spotify-icon"><i class="fab fa-spotify"></i></span>
+<span class="song-info">
+<strong id="currentSong">Cinderella (feat. Ty Dolla $ign)</strong>
+<small id="currentArtist">Mac Miller, Ty Dolla $ign</small>
+</span>
+<span class="music-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+<i class="fas fa-chevron-down arrow"></i>
+</button>
+<div class="player-area">
+<iframe id="spotifyPlayer" title="Persistent Spotify music player" src="https://open.spotify.com/embed/track/2lpygKqzPFtItQ4ss3cgfb?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="eager"></iframe>
+<div class="island-actions">
+<a id="spotifyLink" class="spotify-button" href="https://open.spotify.com/track/2lpygKqzPFtItQ4ss3cgfb" target="_blank" rel="noopener"><i class="fab fa-spotify"></i>Open on Spotify</a>
+<button id="themeButton" class="theme-button" type="button"><i class="fas fa-sun"></i><span>Light Mode</span></button>
+</div>
+<p class="island-note">Press Play in this Spotify player, then use Home, About, Contact, or Address. The inner page changes while this player stays loaded.</p>
+</div>
+</div>
+<script>
+const frame=document.getElementById("portfolioFrame");
+const island=document.getElementById("dynamicIsland");
+const header=document.getElementById("islandHeader");
+const player=document.getElementById("spotifyPlayer");
+const song=document.getElementById("currentSong");
+const artist=document.getElementById("currentArtist");
+const spotifyLink=document.getElementById("spotifyLink");
+const themeButton=document.getElementById("themeButton");
+let firstFrameLoad=true;
+
+function setExpanded(value){
+    island.classList.toggle("expanded",value);
+    header.setAttribute("aria-expanded",String(value));
+}
+
+function applyTheme(theme){
+    const selected=theme==="light"?"light":"dark";
+    document.documentElement.setAttribute("data-theme",selected);
+    localStorage.setItem("thirdy-portfolio-theme",selected);
+    const icon=themeButton.querySelector("i");
+    const label=themeButton.querySelector("span");
+    if(selected==="light"){
+        icon.className="fas fa-moon";
+        label.textContent="Dark Mode";
+    }else{
+        icon.className="fas fa-sun";
+        label.textContent="Light Mode";
+    }
+    if(frame.contentWindow){
+        frame.contentWindow.postMessage({type:"portfolio-theme",theme:selected},"*");
+    }
+}
+
+function changeTrack(data){
+    if(!data||!data.id)return;
+    player.src="https://open.spotify.com/embed/track/"+encodeURIComponent(data.id)+"?utm_source=generator&theme=0";
+    song.textContent=data.title||"Selected Spotify Song";
+    artist.textContent=data.artist||"Spotify";
+    spotifyLink.href=data.spotify||("https://open.spotify.com/track/"+encodeURIComponent(data.id));
+    localStorage.setItem("thirdy-selected-track",JSON.stringify({
+        id:data.id,
+        title:data.title||"",
+        artist:data.artist||"",
+        spotify:spotifyLink.href
+    }));
+    setExpanded(true);
+}
+
+header.addEventListener("click",function(){
+    setExpanded(!island.classList.contains("expanded"));
+});
+
+themeButton.addEventListener("click",function(){
+    const current=document.documentElement.getAttribute("data-theme")||"dark";
+    applyTheme(current==="light"?"dark":"light");
+});
+
+window.addEventListener("message",function(event){
+    if(event.data&&event.data.type==="spotify-track"){
+        changeTrack(event.data);
+    }
+});
+
+frame.addEventListener("load",function(){
+    const theme=localStorage.getItem("thirdy-portfolio-theme")||"dark";
+    if(frame.contentWindow){
+        frame.contentWindow.postMessage({type:"portfolio-theme",theme:theme},"*");
+    }
+    if(firstFrameLoad){
+        firstFrameLoad=false;
+        return;
+    }
+    setExpanded(false);
+    island.classList.remove("switching");
+    void island.offsetWidth;
+    island.classList.add("switching");
+});
+
+const savedTrack=localStorage.getItem("thirdy-selected-track");
+if(savedTrack){
+    try{
+        const data=JSON.parse(savedTrack);
+        if(data&&data.id){
+            player.src="https://open.spotify.com/embed/track/"+encodeURIComponent(data.id)+"?utm_source=generator&theme=0";
+            song.textContent=data.title||song.textContent;
+            artist.textContent=data.artist||artist.textContent;
+            spotifyLink.href=data.spotify||("https://open.spotify.com/track/"+encodeURIComponent(data.id));
+        }
+    }catch(error){}
+}
+applyTheme(localStorage.getItem("thirdy-portfolio-theme")||"dark");
+</script>
+</body>
+</html>

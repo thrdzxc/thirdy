@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="https://samsales581-sys.github.io/Thirdy-Portfolio/favicon.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Address</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+.nav-link {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    color: #ffffff;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.nav-link:hover {
+    color: #ff6b6b;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.8), 0 0 22px rgba(255, 107, 107, 0.5);
+}
+.nav-link.active { color: #ff6b6b; }
+.card {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    border-left: 4px solid #ff6b6b;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    background-color: #222222;
+    transform: translateX(10px);
+    box-shadow: 6px 0 25px rgba(255, 107, 107, 0.4), 0 8px 20px rgba(255, 107, 107, 0.2);
+}
+.card-link {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.card-link:hover {
+    color: #ff6b6b;
+    text-shadow: 0 0 8px rgba(255, 107, 107, 0.7);
+}
+.map-btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background: linear-gradient(135deg, #ff2200, #cc1100);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 34, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.map-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 34, 0, 0.7), 0 0 20px rgba(255, 107, 107, 0.4);
+}
+@media(max-width:850px){nav ul{gap:18px!important;justify-content:center!important;flex-wrap:wrap!important}}
+</style>
+
+
+<style>
+html[data-theme="light"] body{
+    background-color:#fff5f5!important;
+    background-image:
+        radial-gradient(ellipse at bottom left,rgba(255,107,107,.28) 0%,rgba(255,193,193,.18) 35%,transparent 60%),
+        radial-gradient(ellipse at top right,rgba(255,107,107,.24) 0%,rgba(255,200,200,.16) 35%,transparent 60%),
+        radial-gradient(ellipse at bottom right,rgba(255,180,180,.16) 0%,transparent 45%),
+        radial-gradient(ellipse at top left,rgba(255,190,190,.16) 0%,transparent 45%)!important;
+    color:#2b1111!important;
+}
+html[data-theme="light"] nav{
+    background-color:rgba(255,250,250,.96)!important;
+    box-shadow:0 2px 14px rgba(120,30,30,.10);
+}
+html[data-theme="light"] .nav-link{
+    color:#381414!important;
+}
+html[data-theme="light"] .nav-link:hover,
+html[data-theme="light"] .nav-link.active{
+    color:#ff6b6b!important;
+}
+html[data-theme="light"] p{
+    color:#674848!important;
+}
+html[data-theme="light"] .card{
+    background-color:#fffafa!important;
+    color:#2b1111!important;
+    border-color:#ff8585!important;
+}
+html[data-theme="light"] .card:hover{
+    background-color:#fff0f0!important;
+}
+html[data-theme="light"] .card-link{
+    color:#674848!important;
+}
+html[data-theme="light"] .spotify-player-wrap{
+    background:#f4e5e5!important;
+}
+html[data-theme="light"] .spotify-now,
+html[data-theme="light"] .spotify-track-btn{
+    background:#fff1f1!important;
+    color:#2b1111!important;
+}
+html[data-theme="light"] .spotify-track-btn:hover,
+html[data-theme="light"] .spotify-track-btn.active{
+    background:#ffe4e4!important;
+}
+html[data-theme="light"] .spotify-now span,
+html[data-theme="light"] .spotify-track-info small,
+html[data-theme="light"] .music-subtitle,
+html[data-theme="light"] .spotify-note{
+    color:#795858!important;
+}
+html[data-theme="light"] h2 span[style*="#ffffff"],
+html[data-theme="light"] h2 span[style*="#fff"]{
+    color:#2b1111!important;
+}
+</style>
+<script>
+(function(){
+    const savedTheme=localStorage.getItem("thirdy-portfolio-theme")||"dark";
+    document.documentElement.setAttribute("data-theme",savedTheme);
+    window.addEventListener("message",function(event){
+        if(event.data&&event.data.type==="portfolio-theme"){
+            const theme=event.data.theme==="light"?"light":"dark";
+            document.documentElement.setAttribute("data-theme",theme);
+            localStorage.setItem("thirdy-portfolio-theme",theme);
+        }
+    });
+})();
+</script>
+
+
+<style>
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden!important;
+}
+body>section,
+body>div>section{
+    height:100vh!important;
+    min-height:100vh!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+}
+@media(max-width:850px),(max-height:650px){
+    html,body{
+        height:auto;
+        min-height:100%;
+        overflow-x:hidden!important;
+        overflow-y:auto!important;
+    }
+    body>section,
+    body>div>section{
+        height:auto!important;
+        min-height:100vh!important;
+        overflow:visible!important;
+    }
+}
+</style>
+
+</head>
+<body style="margin:0; padding:0; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background-color:#1a0000; background-image:radial-gradient(ellipse at bottom left, rgba(204,17,0,0.55) 0%, rgba(136,0,0,0.25) 35%, transparent 60%), radial-gradient(ellipse at top right, rgba(204,17,0,0.55) 0%, rgba(136,0,0,0.25) 35%, transparent 60%), radial-gradient(ellipse at bottom right, rgba(153,0,0,0.20) 0%, transparent 45%), radial-gradient(ellipse at top left, rgba(153,0,0,0.18) 0%, transparent 45%); color:#ffffff; overflow-x:hidden; min-height:100vh;">
+<nav style="position:fixed; top:0; left:0; right:0; background-color:rgba(0,0,0,0.95); padding:1.5rem 5%; z-index:1000; box-sizing:border-box;">
+<ul style="display:flex; justify-content:flex-end; align-items:center; list-style:none; gap:3rem; margin:0; padding:0; flex-wrap:nowrap;">
+<li><a href="home.html" class="nav-link">Home</a></li>
+<li><a href="about.html" class="nav-link">About</a></li>
+<li><a href="contact.html" class="nav-link">Contact</a></li>
+<li><a href="address.html" class="nav-link active">Address</a></li>
+</ul>
+</nav>
+<div style="position:relative; z-index:1;">
+<section style="min-height:100vh; padding:120px 5% 80px;">
+<div style="max-width:1200px; margin:0 auto;">
+<div style="text-align:center; margin-bottom:4rem;">
+<h1 style="font-size:3.5rem; font-weight:700; margin-bottom:1rem; margin-top:0;">Find <span style="color:#ff6b6b;">Me</span></h1>
+<p style="font-size:1.2rem; color:#cccccc; margin:0;">Here's where you can find me and contact me</p>
+</div>
+<div>
+<h2 style="font-size:2rem; margin-bottom:2rem; margin-top:0; color:#ff6b6b;">Location Details</h2>
+
+<div class="card">
+<i class="fas fa-map-marker-alt" style="font-size:2rem; color:#ff6b6b; margin-right:1.5rem; margin-top:0.3rem; width:40px; text-align:center; flex-shrink:0;"></i>
+<div>
+<h3 style="font-size:1.3rem; margin-bottom:0.5rem; margin-top:0;">Home Address</h3>
+<p style="color:#cccccc; font-size:1.1rem; line-height:1.6; margin:0 0 0.75rem 0;">
+310 Gomburza Street<br>
+Naggasican<br>
+Santiago City, Isabela 3311<br>
+Philippines
+</p>
+<a href="https://maps.app.goo.gl/MshQMnpGr8JeG7Vh6" target="_blank" rel="noopener" class="map-btn">
+<i class="fas fa-map-marked-alt" style="margin-right:0.4rem;"></i>Open in Google Maps
+</a>
+</div>
+</div>
+
+<div class="card">
+<i class="fas fa-envelope" style="font-size:2rem; color:#ff6b6b; margin-right:1.5rem; margin-top:0.3rem; width:40px; text-align:center; flex-shrink:0;"></i>
+<div>
+<h3 style="font-size:1.3rem; margin-bottom:0.5rem; margin-top:0;">Email Address</h3>
+<p style="color:#cccccc; font-size:1.1rem; line-height:1.6; margin:0;">
+<a href="mailto:samsales581@gmail.com" class="card-link">samsales581@gmail.com</a>
+</p>
+</div>
+</div>
+
+<div class="card">
+<i class="fas fa-phone" style="font-size:2rem; color:#ff6b6b; margin-right:1.5rem; margin-top:0.3rem; width:40px; text-align:center; flex-shrink:0;"></i>
+<div>
+<h3 style="font-size:1.3rem; margin-bottom:0.5rem; margin-top:0;">Contact Number</h3>
+<p style="color:#cccccc; font-size:1.1rem; line-height:1.6; margin:0;">
+<span class="card-link">0906-941-8354</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</body>
+</html>
